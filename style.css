@@ -1,4 +1,4 @@
-#dropbox{
+#dropbox {
   width: 50%;
   margin: auto;
   height: 400px;
@@ -10,12 +10,12 @@
   overflow: hidden
 }
 
-#dropbox p{
+#dropbox p {
   font: 1.5rem/1rem sans-serif;
   opacity: 0.7;
 }
 
-#dropbox > img{
+#dropbox>img {
   width: 100%;
   height: auto;
 }
