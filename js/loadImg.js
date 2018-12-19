@@ -2,21 +2,19 @@ $( function() {
   $( "#tabs" ).tabs();
 } );
 const loadImg = (id) => {
-  const other = document.querySelector(`#${id}`)
   const images = JSON.parse(localStorage.getItem('photos') || "[]")
   const filterImages = images.filter( img => {
     return img.type === `${id}`
   })
   if(filterImages.length > 0){
     filterImages.forEach(filterImage => {
-      const img = document.createElement('img')
-      img.src = filterImage.src
-      other.appendChild(img)
+      $(`<div>
+            <img src="${filterImage.src}">
+            <button class="remove-img">x</button>
+        </div>`).appendTo(`#${id}`)
     });
   } else {
-    const text = document.createElement('p')
-    text.innerHTML = 'У вас нет фотографий данной категории'
-    other.appendChild(text)
+    $(`#${id}`).html("<p>У вас нет фотографий данной категории</p>")
   }
 }
 loadImg('selfies')

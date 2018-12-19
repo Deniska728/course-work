@@ -5,6 +5,7 @@ const handleSubmit = e => {
   if ( $('#dropbox img').length > 0) {
     const photos = JSON.parse(localStorage.getItem('photos') || "[]")
     const src = $('#dropbox img').prop('src')
+
     const photo = {
       id: Date.now(),
       type: selected,
@@ -12,10 +13,18 @@ const handleSubmit = e => {
     }
     photos.push(photo)
     localStorage.setItem('photos', JSON.stringify(photos))
+
     $('#dropbox > img').remove()
     $('#dropbox').append('<p>Перетащите сюда фотографию</p>')
-    $('<img>', { src }).appendTo(`#${selected}`)
+    $(`<div>
+        <img src="${src}">
+        <button class="remove-img">x</button>
+      </div>`).appendTo(`#${selected}`)
     $(`#${selected}`).find('p').remove()  
+    openModal()
+
+  } else {
+    alert('Вы не перенесли изображение')
   }
 }
 
