@@ -1,4 +1,5 @@
 $( function() {
+  /* Модальное окно, взятое из JQuery UI*/
   $( "#dialog-confirm" ).dialog({
     title: false,
     modal: true,
@@ -24,13 +25,3 @@ $( function() {
   openModal()
 } );
 
-const openModal = () =>{
-  $( "#tabs img" ).on( "click", function(e) {
-    $( "#dialog-confirm" ).html('<div><img alt=""></div>')
-    $( "#dialog-confirm" ).dialog( "open" )
-    $( "#dialog-confirm" ).find('img').attr('src', e.target.src)
-    $(".ui-widget-overlay").on('click', function(){
-        $( "#dialog-confirm" ).dialog( "close" );
-    })
-  });
-}
