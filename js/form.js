@@ -28,20 +28,20 @@ const handleSubmit = e => {
     try {
       //Добавляем изменённый массив в localStorage
       localStorage.setItem('photos', JSON.stringify(photos))
+   
+      //очищаем область с изображением
+      $('#dropbox > img').remove()
+      $('#dropbox').append('<p>Перетащите сюда фотографию</p>')
+
+      //создаём фотографию в галерее по id
+      $(`<div id="${photoId}">
+          <img src="${src}">
+          <button class="remove-img">x</button>
+        </div>`).appendTo(`#${selected}`)
+      $(`#${selected}`).find('p').remove()
     } catch (error) {
       alert('Память заполнена. Удалите изображение из альбома и попробуйте заново')
     }
-    
-    //очищаем область с изображением
-    $('#dropbox > img').remove()
-
-    //создаём фотографию в галерее по id
-    $('#dropbox').append('<p>Перетащите сюда фотографию</p>')
-    $(`<div id="${photoId}">
-        <img src="${src}">
-        <button class="remove-img">x</button>
-      </div>`).appendTo(`#${selected}`)
-    $(`#${selected}`).find('p').remove()
 
     // Добавляем возможность удаления и открытия модального укна новому изображению  
     openModal()
